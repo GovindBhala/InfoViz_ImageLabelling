@@ -6,7 +6,7 @@ For labelling technique, we generated descriptions of the images using Neural Ne
 ![Image of vgg16](https://github.com/GovindBhala/InfoViz_ImageLabelling/blob/master/vgg16.png)
 
 Since we want the encoded features of the image and not the classification results, the last softmax layer is not used. Instead, we take the output of the last Max pool layer that is before flattening the image, to generate the feature vectors of the images. This encoded image vector is stored as a NumPy file which is considered the output of the encoder.
-VGG16 application is used to preprocess the image and since, it accepts images with certain dimensions, all the images are resized to 224*224*3.
+VGG16 application is used to preprocess the image and since, it accepts images with certain dimensions, all the images are resized to 224 by 224 with 3 channels.
 This encoded image along with the text for training is passed on to Lstm based RNN decoder which trains the model to generate the text describing the image. The following architecture is from the *add research paper called show and tell link*
 
 ![Image of showandtell](https://github.com/GovindBhala/InfoViz_ImageLabelling/blob/master/show%20and%20tell%20architecture.png)
