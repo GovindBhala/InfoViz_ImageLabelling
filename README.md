@@ -21,5 +21,6 @@ USE encodes text into high-dimensional vectors that can be used for text classif
 It is a pre-trained model that is optimized for greater-than-word length text, such as sentences, phrases or short paragraphs. It is trained on a variety of data sources and a variety of tasks with the aim of dynamically accommodating a wide variety of natural language understanding tasks. The input is variable length English text and it returns 512-dimensional vector as an output.
 The encoded image descriptions are stored as a pickle file which is updated with every new image added to data. To measure the text similarity between the query and image labels, Word Mover’s distance is used; which measures the dissimilarity between two text documents as the minimum amount of distance that the embedded words of one document need to “travel” to reach the embedded words of another document.
 Taking 50 most similar image labels based on WMD, we apply TFIDF and Document to Bag of Words to find the image descriptions most similar to the query. This is done because WMD mainly gives results based on the semantic similarity; So, once we get the most semantically similar results, we use Doc2BOW and TFIDF which will fetch syntactically similar results.
+The most similar descriptions are mapped to it's corresponding images to return the final image results to the user.
 
-
+![Image of vgg16](https://github.com/GovindBhala/InfoViz_ImageLabelling/blob/master/images/NLP%20flowchart.png)
