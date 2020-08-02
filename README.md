@@ -22,6 +22,7 @@ For the search mechanism, Natural Language Processing is used to calculate the t
 To get sentence similarity, Universal Sentence Encoder (USE) is used to first vectorize the image descriptions and the search query. 
 USE encodes text into high-dimensional vectors that can be used for text classification, semantic similarity, clustering and other natural language tasks.
 It is a pre-trained model that is optimized for greater-than-word length text, such as sentences, phrases or short paragraphs. It is trained on a variety of data sources and a variety of tasks with the aim of dynamically accommodating a wide variety of natural language understanding tasks. The input is variable length English text and it returns 512-dimensional vector as an output.<br/>
+
 The next step in this process is to find the most similar vectors in the image labels to the vector generated from user's input query.
 To measure the text similarity between the query and image labels, Word Mover’s distance is used; which measures the dissimilarity between two text as the minimum amount of euclidean distance that the embedded words of one document need to “travel” to reach the embedded words of another document. <br/>
 To speed up the process of sentence matching, image descriptions are pre-encoded and stored in a vector form as a pickle file which is updated with every new image added to data. 
