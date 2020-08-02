@@ -1,6 +1,8 @@
-# InfoViz_ImageLabelling
+# Infomation Vizualization
+### Better Image captioning using neural image captioning
 
-Image search has traditionally been matching multiple labels tagged to an image which although is very fast and <!-- we can't call it accurate, becuase we are proving it is not accurate--> accurate way of searching images but sometimes, keyword based search loses context and deeper meaning provided in a search query. This project aims for a better labelling technique with a corresponding search mechanism to get <!-- here accurate is okay-->accurate <!-- should we add contextual -->search results.
+Image search has traditionally been matching multiple labels tagged to an image which although is very fast but sometimes, keyword based search loses context and deeper meaning provided in a search query. This project aims for a better labelling technique with a corresponding search mechanism to get accurate contextual and symentically correct search results.
+
 For labeling the images, we generated a sentence long descriptions for a given image using Deep Sequence Neural Network through an encoder - decoder architecture, where image is encoded via a CNN and the decoder which is a RNN is trained to generate sentences on the encoded image input. For encoder, we have used a pre-trained model VGG-16 which is a Convolution neural net responsible for winning Imagenet competition in 2014. It has 16 weighted layers and has convolution layers of 3\*3 filter with stride 1 and max pool layer of 2\*2 filter of stride 2 consistently throughout the architecture. At the end it has 2 dense layers followed by a SoftMax layer for generating classification results. 
 
 ![Image of vgg16](https://github.com/GovindBhala/InfoViz_ImageLabelling/blob/master/images/vgg16.png)
