@@ -25,6 +25,7 @@ It is a pre-trained model that is optimized for greater-than-word length text, s
 The next step in this process is to find the most similar vectors in the image labels to the vector generated from user's input query.
 To measure the text similarity between the query and image labels, Word Mover’s distance is used; which measures the dissimilarity between two text as the minimum amount of euclidean distance that the embedded words of one document need to “travel” to reach the embedded words of another document. <br/>
 To speed up the process of sentence matching, image descriptions are pre-encoded and stored in a vector form as a pickle file which is updated with every new image added to data. 
+
 Taking 50 most similar image labels based on WMD, we apply TFIDF and Document to Bag of Words to find the image descriptions most similar to the query. This is done because WMD mainly gives results based on the semantic similarity; so once we get the most semantically similar results, we use Doc2BOW and TFIDF which will fetch syntactically similar results.
 The most similar descriptions are mapped to it's corresponding images to return the final image results to the user.
 
