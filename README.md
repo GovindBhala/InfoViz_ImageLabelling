@@ -1,5 +1,6 @@
 # Infomation Vizualization
-### Better Image captioning using neural image captioning
+### <ins>Better Image captioning using neural image captioning</ins>
+
 
 Image search has traditionally been matching multiple labels tagged to an image which although is very fast but sometimes, keyword based search loses context and deeper meaning provided in a search query. This project aims for a better labelling technique with a corresponding search mechanism to get accurate contextual and symentically correct search results.
 
