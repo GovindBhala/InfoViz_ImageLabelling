@@ -1,12 +1,29 @@
 import pickle
-
 import numpy as np
 import tensorflow as tf
 import tensorflow.keras as keras
 
+
+## All functions in this file are taken from GRU training notebook and are described in detail there.
+## This can be considered as a script version of the same notebook which has a predict function in the end to return model predictions.
+
+
+## Model parameters -- Taken from the GRU Training notebook
+
 vocabulary_size = 25000
+max_caption_length = 264
+BATCH_SIZE = 128
+BUFFER_SIZE = 1000
+EMBEDDING_DIM = 256
+units = 512
+vocab_size = len(tokenizer.word_index) + 1
+attention_dim = 49
+channel_dim = 512
+
+###
 
 
+## Tokens of captions saved from training notebook
 with open('tokenizer.pickle', 'rb') as handle:
     tokenizer = pickle.load(handle)
 
@@ -41,13 +58,9 @@ def encode_images(train_images):
 
         for bf, p in zip(batch_image_features, path):
             path_of_feature = p.numpy().decode("utf-8")
-            # print(path_of_feature+'.npy')
             if (os.path.exists(path_of_feature + '.npy') == False):
-                # print('2'+path_of_feature)
                 np.save(path_of_feature, bf.numpy())
 
-
-max_caption_length = 264
 
 
 def evaluate(image):
@@ -94,20 +107,12 @@ class BahdanauAttention(tf.keras.Model):
         self.V = tf.keras.layers.Dense(1)
 
     def call(self, features, hidden):
-        # features(CNN_encoder output) shape == (batch_size, 64, embedding_dim)
-
-        # hidden shape == (batch_size, hidden_size)
-        # hidden_with_time_axis shape == (batch_size, 1, hidden_size)
         hidden_with_time_axis = tf.expand_dims(hidden, 1)
 
-        # score shape == (batch_size, 64, hidden_size)
         score = tf.nn.tanh(self.W1(features) + self.W2(hidden_with_time_axis))
 
-        # attention_weights shape == (batch_size, 64, 1)
-        # you get 1 at the last axis because you are applying score to self.V
         attention_weights = tf.nn.softmax(self.V(score), axis=1)
 
-        # context_vector shape after sum == (batch_size, hidden_size)
         context_vector = attention_weights * features
         context_vector = tf.reduce_sum(context_vector, axis=1)
 
@@ -118,7 +123,7 @@ class Encoder(keras.Model):
 
     def __init__(self, EMBEDDING_DIM):
         super(Encoder, self).__init__()
-        self.dense_fc = keras.layers.Dense(EMBEDDING_DIM)  # Shape=(batch_size, 49 , embedding_dim)
+        self.dense_fc = keras.layers.Dense(EMBEDDING_DIM)
 
     def call(self, input_dim):
         return (tf.nn.relu(self.dense_fc(input_dim)))
@@ -154,14 +159,6 @@ class Decoder(keras.Model):
          return tf.zeros((batch_size, self.units))
 
 
-BATCH_SIZE = 128
-BUFFER_SIZE = 1000
-EMBEDDING_DIM = 256
-units = 512
-vocab_size = len(tokenizer.word_index) + 1
-attention_dim = 49
-channel_dim = 512
-
 Image_encoder = Encoder(EMBEDDING_DIM)
 Text_decoder = Decoder(EMBEDDING_DIM, units, vocab_size)
 
@@ -180,6 +177,7 @@ def loss_function(real, pred):
     return tf.reduce_mean(loss_)
 
 
+## Loading saved model
 checkpoint_path = ".//512000-GRU//512000-GRU"
 ckpt = tf.train.Checkpoint(encoder=Image_encoder,
                            decoder=Text_decoder,
@@ -188,12 +186,9 @@ ckpt_manager = tf.train.CheckpointManager(ckpt, checkpoint_path, max_to_keep=5)
 
 ckpt.restore(ckpt_manager.latest_checkpoint)
 
-# Create a URL route in our application for "/"
+
 def model(image_url):
     
-    image_path = tf.keras.utils.get_file(image_url, origin=image_url)
-
-
     image_path = tf.keras.utils.get_file(image_url, origin=image_url)
 
     result, attention_plot = evaluate(image_path)
