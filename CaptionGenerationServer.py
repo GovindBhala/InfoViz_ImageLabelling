@@ -1,8 +1,8 @@
 import os
 import flask
 from flask import session, url_for, jsonify, request, redirect, render_template
-from module.Image_Prediction_GRU import model as model_gru
-from module.ImageCaptioning_Full_script_old import model as model_lstm
+from module.GRU_model import model as model_gru
+from module.LSTM_model import model as model_lstm
 from flask_cors import CORS
 
 
