@@ -7,6 +7,7 @@
 * [Dataset](#dataset)
 * [Image Labelling](#image-labeling)
 * [Image Searching](#image-searching)
+* [Project Setup](#project-setup)
 
 #### Description
 
@@ -48,3 +49,16 @@ Taking 50 most similar image labels based on WMD, we apply TFIDF and Document to
 The most similar descriptions are mapped to it's corresponding images to return the final image results to the user.
 
 ![Image of vgg16](https://github.com/GovindBhala/InfoViz_ImageLabelling/blob/master/images/NLP%20flowchart.png)
+
+
+#### Project Setup
+* Notebooks : Contains notebooks used for training image caption generation model
+  - GRU.ipynb : Notebook for training GRU model
+  - LSTM.ipynb : Notebook for training LSTM model
+* UI Components : Contains all files necessary to run the UI
+* module : Contains the script version of model training notebooks, such that they can be used in the server code
+  - GRU_model.py : Script for loading and predicting on GRU model
+  - LSTM_model.py : Script for loading and predicting on LSTM model
+  - tokenizer.pickle : pickle file which contains tokenized captions, saved while training
+ * CaptionGenerationServer.py : Flask application for hosting Caption Generation server
+ * SearchOnQueryServer.py : Flask application for hosting searching for images based on user query server
