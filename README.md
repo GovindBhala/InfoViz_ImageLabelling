@@ -11,18 +11,15 @@
 * [API Structure](#api-structure)
 
 #### Description
----
 Image search has traditionally been matching multiple labels tagged to an image which although is very fast but sometimes, keyword based search loses context and deeper meaning provided in a search query. This project aims for a better labelling technique with a corresponding search mechanism to get accurate contextual and symentically correct search results.
 
 
 #### Dataset
----
 The dataset is taken from [MS COCO](https://cocodataset.org/#download). 
 It consists 118,292 images and 591,753 corresponding captions. The data was split into training and testing with 80% and 20% ratio. The captions associated with these images are filtered and tokenized using a vocabulary of most frequent 25,000 words.
 
 
 #### Image Labeling
----
 For labeling the images, we generated a sentence long descriptions for a given image using Deep Sequence Neural Network through an encoder - decoder architecture, where image is encoded via a CNN and the decoder which is a RNN is trained to generate sentences on the encoded image input. For encoder, we have used a pre-trained model VGG-16 which is a Convolution neural net responsible for winning Imagenet competition in 2014.<br/> It has 16 weighted layers and has convolution layers of 3\*3 filter with stride 1 and max pool layer of 2\*2 filter of stride 2 consistently throughout the architecture. At the end it has 2 dense layers followed by a SoftMax layer for generating classification results. 
 
 ![Image of vgg16](https://github.com/GovindBhala/InfoViz_ImageLabelling/blob/master/images/vgg16.png)
@@ -36,7 +33,6 @@ This encoded image along with the text for training is passed on to RNN decoder 
 
 
 #### Image Searching
----
 
 For the search mechanism, Natural Language Processing is used to calculate the text similarity between the user query and the stored label texts. Once we have the top similar results we can extract the corrosponding image associated with the label, thus forming our seach engine.<br/>
 To get sentence similarity, [Universal Sentence Encoder](https://tfhub.dev/google/universal-sentence-encoder/4) (USE) is used to first vectorize the image descriptions and the search query. 
@@ -54,7 +50,6 @@ The most similar descriptions are mapped to it's corresponding images to return 
 
 
 #### Project Setup
----
 * Notebooks : Contains notebooks used for training image caption generation model
   - GRU.ipynb : Notebook for training GRU model
   - LSTM.ipynb : Notebook for training LSTM model
@@ -72,7 +67,6 @@ The most similar descriptions are mapped to it's corresponding images to return 
  All trained models along with the embeddings calculated on training captions can be found uploaded in Google Drive here
  
 #### API Structure
-----
 
 ##### Image Caption Generator<br/>
 
