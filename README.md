@@ -8,6 +8,7 @@
 * [Image Labelling](#image-labeling)
 * [Image Searching](#image-searching)
 * [Project Setup](#project-setup)
+* [API Structure](#api-structure)
 
 #### Description
 
@@ -62,3 +63,10 @@ The most similar descriptions are mapped to it's corresponding images to return 
   - tokenizer.pickle : pickle file which contains tokenized captions, saved while training
  * CaptionGenerationServer.py : Flask application for hosting Caption Generation server
  * SearchOnQueryServer.py : Flask application for hosting searching for images based on user query server
+ 
+ For training the model, use the training notebooks.<br />
+ For hosting the servers, exectue the flask applications <br />
+ For running UI application, please follow instructions in UI Components folder's README
+ All trained models along with the embeddings calculated on training captions can be found uploaded in Google Drive here
+ 
+#### API Structure
