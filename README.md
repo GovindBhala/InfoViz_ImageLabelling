@@ -11,7 +11,7 @@
 * [API Structure](#api-structure)
 
 #### Description
-Image search has traditionally been matching multiple labels tagged to an image which although is very fast but sometimes, keyword based search loses context and deeper meaning provided in a search query. This project aims for a better labelling technique with a corresponding search mechanism to get accurate contextual and symentically correct search results.
+Image search has traditionally been matching multiple labels tagged to an image which although is very fast but sometimes, keyword based search loses context and deeper meaning provided in a search query. This project aims for a better labelling technique with a corresponding search mechanism to get accurate contextual and semantically correct search results.
 
 
 #### Dataset
@@ -34,7 +34,7 @@ This encoded image along with the text for training is passed on to RNN decoder 
 
 #### Image Searching
 
-For the search mechanism, Natural Language Processing is used to calculate the text similarity between the user query and the stored label texts. Once we have the top similar results we can extract the corrosponding image associated with the label, thus forming our seach engine.<br/>
+For the search mechanism, Natural Language Processing is used to calculate the text similarity between the user query and the stored label texts. Once we have the top similar results we can extract the corrosponding image associated with the label, thus forming our search engine.<br/>
 To get sentence similarity, [Universal Sentence Encoder](https://tfhub.dev/google/universal-sentence-encoder/4) (USE) is used to first vectorize the image descriptions and the search query. 
 USE encodes text into high-dimensional vectors that can be used for text classification, semantic similarity, clustering and other natural language tasks.
 It is a pre-trained model that is optimized for greater-than-word length text, such as sentences, phrases or short paragraphs. It is trained on a variety of data sources and a variety of tasks with the aim of dynamically accommodating a wide variety of natural language understanding tasks. The input is variable length English text and it returns 512-dimensional vector as an output.<br/>
