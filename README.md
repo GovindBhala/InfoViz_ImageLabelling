@@ -51,8 +51,8 @@ The most similar descriptions are mapped to it's corresponding images to return 
 
 #### Project Setup
 * Notebooks : Contains notebooks used for training image caption generation model
-  - GRU.ipynb : Notebook for training GRU model
-  - LSTM.ipynb : Notebook for training LSTM model
+  - Image Captioning-full-GRU-256-512-1000.ipynb : Notebook for training GRU model
+  - Image Captioning-full-LSTM-256-512-1000.ipynb : Notebook for training LSTM model
 * UI Components : Contains all files necessary to run the UI
 * module : Contains the script version of model training notebooks, such that they can be used in the server code
   - GRU_model.py : Script for loading and predicting on GRU model
