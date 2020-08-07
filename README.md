@@ -64,7 +64,7 @@ The most similar descriptions are mapped to it's corresponding images to return 
  For training the model, use the training notebooks.<br />
  For hosting the servers, exectue the flask applications <br />
  For running UI application, please follow instructions in UI Components folder's README
- All trained models along with the embeddings calculated on training captions can be found uploaded in Google Drive here
+ All trained models along with the embeddings calculated on training captions can be found uploaded in Google Drive [here](https://drive.google.com/drive/folders/1yGoATUv1TNLIgbgB5Ngle3dOKSRkR22B?usp=sharing)
  
 #### API Structure
 
